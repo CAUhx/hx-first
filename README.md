@@ -18,8 +18,8 @@
 # Output
 There are three output results, including accuracy, training images, test images with prediction results. 
 1. The accuracy with epochs is shown on the command line.
-![image](main/readme%20images/1.png)
+![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/1.png)
 2. The first 30 images used for training are shown.
-![image](main/readme%20images/2.png)
+![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/2.png)
 3. All the test images are shown finally, with the prediction for each image. The example data outputs all the 40 images as followed. 
-![image](main/readme%20images/3.png)
+![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/3.png)
