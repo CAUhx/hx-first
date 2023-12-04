@@ -17,9 +17,9 @@
 4. Running CNN-nCDA.py in command line: python CNN-nCDA.py
 # Output
 There are three output results, including accuracy, training images, test images with prediction results. 
-1. The accuracy with epochs is shown on the command line.  
-![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/1.png)
+1. The accuracy with epochs is shown on the command line.
+![image](image/1.png)
 2. The first 30 images used for training are shown.
-![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/2.png)
+![image](image/2.png)
 3. All the test images are shown finally, with the prediction for each image. The example data outputs all the 40 images as followed. 
-![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/3.png)
+![image](image/3.png)
