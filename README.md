@@ -21,8 +21,7 @@ There are three output results, including accuracy, training images, test images
 
 
 2. The first 30 images used for training are shown. 
- 
-
+![image](https://github.com/CAUhx/nCDA-CNN/blob/main/readme%20images/2.png)
 3. All the test images are shown finally, with the prediction for each image. The example data outputs all the 40 images as followed. 
 
  
