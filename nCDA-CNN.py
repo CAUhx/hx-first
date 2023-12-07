@@ -19,15 +19,21 @@ IMGS = []
 CLASS_LABEL = ['Milk', 'Dough']
 
 def main():
-    transform()
-    X, y = shape()
+    transform()  
+    X, y = shape() 
     train_images, test_images, train_labels, test_labels = train_test_split(
         X, y, test_size=0.2, random_state=1)
     model = tf.keras.Sequential([
-        tf.keras.layers.Flatten(input_shape=(128, 128, 3)),
-        tf.keras.layers.Dense(50, activation=tf.nn.relu),
-        tf.keras.layers.Dense(3, activation=tf.nn.softmax)])
-    model.compile(optimizer=tf.keras.optimizers.Adam(),
+        tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(128, 128, 3)),
+        tf.keras.layers.MaxPooling2D(2, 2),
+        tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
+        tf.keras.layers.MaxPooling2D(2, 2),
+        tf.keras.layers.Conv2D(128, (3, 3), activation='relu'),
+        tf.keras.layers.MaxPooling2D(2, 2),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(2, activation='softmax') ])
+    model.compile(optimizer='adam',
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
     model.fit(train_images, train_labels, epochs=10)
@@ -66,10 +72,10 @@ def main():
             plt.xlabel('{} {:.1f}%'.format(CLASS_LABEL[res], prediction[res] * 100), color='red')
     plt.show()
 
-    
+
 def transform():
     global IMGS
-    fs = glob.glob('{}*.jpg'.format(IMG_DIR_1))
+    fs = glob.glob('{}*.png'.format(IMG_DIR_1))
     if os.path.exists(DEST_DIR_1):
         shutil.rmtree(DEST_DIR_1)
     os.mkdir(DEST_DIR_1)
@@ -81,14 +87,14 @@ def transform():
             dest = '{}{}.png'.format(DEST_DIR_1, pathlib.Path(i).stem)
             im.resize((128, 128)).save(dest)
             IMGS.append(dest)
-    fs = glob.glob('{}*.jpg'.format(IMG_DIR_2))
+    fs = glob.glob('{}*.png'.format(IMG_DIR_2))
     for i in fs:
         with PIL.Image.open(i) as im:
             dest = '{}{}.png'.format(DEST_DIR_2, pathlib.Path(i).stem)
             im.resize((128, 128)).save(dest)
             IMGS.append(dest)
 
-            
+
 def shape():
     M = []
     for fs in IMGS:
